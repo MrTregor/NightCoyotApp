@@ -1,0 +1,248 @@
+:root {
+    --main-color: #5B247A;
+    --sub-color: #953ca1;
+    --main-bg-color: linear-gradient(120deg, var(--main-color), var(--sub-color));
+}
+/* TODO: Разобраться со стилями кнопок + и - */
+.count-btn {
+    font-size: 2rem;
+    border: 20px;
+    border-radius: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background: var(--main-color);
+}
+
+
+.btn-check:active + .count-btn:focus, .btn-check:checked + .count-btn:focus, .count-btn.active:focus, .count-btn:active:focus, .show > .count-btn.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .25rem var(--sub-color)
+}
+
+.btn:focus {
+    outline: 0;
+    box-shadow: var(--sub-color);
+}
+
+.count-btn.disabled, .count-btn:disabled {
+    border-radius: 2rem;
+    padding-top: 0px;
+    background: var(--sub-color);
+    padding-bottom: 0px;
+}
+
+.btn-check:active + .count-btn, .btn-check:checked + .count-btn, .count-btn.active, .count-btn:active, .show > .count-btn.dropdown-toggle {
+    background: var(--sub-color);
+    border-color: #191c1f
+}
+/*///////////////////////////////////////////////*/
+
+.gradient {
+    background: var(--main-bg-color) !important;
+    color: #fff
+}
+
+body {
+    background: #2d2d2b;
+}
+
+h1 {
+    color: #fefefc;
+}
+
+h2 {
+    color: #fefefc;
+}
+
+h5 {
+    color: #fefefc;
+}
+
+h6 {
+    color: #fefefc;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-link {
+    color: #101011;
+}
+
+.form-select {
+    background-color: #212529;
+    color: #f0f0f0;
+}
+
+.dropdown-menu {
+    background-color: #212529;
+
+}
+
+.dropdown-item {
+    color: #f0f0f0;
+}
+
+.dropdown-item:hover {
+    background-color: #475058;
+    color: #f0f0f0;
+}
+
+
+.nav-link:hover {
+    color: #b1b1b1;
+}
+
+.nav-link-white {
+    color: #f0f0f0;
+}
+
+.nav-link-white:hover {
+    color: #101011;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.br_20 {
+    border-radius: 20px;
+}
+
+.p_8{
+    padding: 8px;
+}
+
+.basketBtn {
+    padding-right: 14px;
+    padding-left: 14px;
+    border-radius: 12px;
+    background: #0ec645;
+    color: var(--bs-dark);
+    font-weight: bold;
+    width: 95%;
+    padding-top: 14px;
+    position: fixed;
+    bottom: 12px;
+}
+
+.form-label {
+    color: #f0f0f0;
+}
+
+.mr_6 {
+    margin-right: 8px
+}
+
+.ml_8 {
+    margin-left: 8px
+}
+
+.mt_8 {
+    margin-top: 8px
+}
+
+.mr_8 {
+    margin-right: 8px
+}
+.mr_20{
+    margin-right: 20px;
+}
+.mr_20{
+    margin-left: 20px;
+}
+
+.mb_8 {
+    margin-bottom: 8px
+}
+
+.m_12 {
+    margin: 12px;
+}
+
+.whiteText {
+    color: var(--bs-white);
+}
+
+.textBold {
+    font-weight: bold;
+}
+
+.pr_8 {
+    padding-right: 8px;
+}
+
+.pt_8 {
+    padding-top: 8px;
+}
+
+.pb_8 {
+    padding-bottom: 8px;
+}
+
+.firstElement {
+    margin-top: 76px;
+}
+
+.firstElement > section {
+    padding-top: 24px;
+}
+
+.pageStretcher {
+    padding-bottom: 1000px;
+}
+
+form {
+    background: #00000099;
+    padding: 12px;
+}
+
+.table {
+    color: #f0f0f0;
+    --bs-table-hover-color: #f0f0f0;
+    --bs-table-striped-color: #f0f0f0;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background: rgba(36, 36, 36, 0.6);
+}
+
+
+.table-striped > tbody > tr:nth-of-type(odd) > *:hover {
+    color: #f0f0f0;
+    background: rgba(36, 36, 36, 0.6);
+}
+
+.form-control {
+    color: #f0f0f0;
+    background-color: #101011;
+
+}
+
+.hideScrollBar::-webkit-scrollbar {
+    width: 0;
+}
+
+.hideScrollBar {
+    -ms-overflow-style: none;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.blockScreen {
+    background: rgba(190, 190, 194, 0.65);
+    color: #101011;
+    padding: 12px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20309;
+}
