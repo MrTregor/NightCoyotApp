@@ -18,7 +18,7 @@ const OrderCookerRow = (props) => {
             </div>
 
             <div style={{width: "auto"}}>
-                <button className="btn" type="button" onClick={() => props.CompleteOrder(props.value.order_id)}
+                <button className="btn m_12" type="button" onClick={() => props.CompleteOrder(props.value.order_id)}
                         style={{background: "#ffb070"}}>
                     <div>Готов</div>
                 </button>

@@ -1,8 +1,8 @@
 import React from "react";
-import {host} from "../../config/database";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import {addEvent} from "../../utility/api_pathes";
 
 
 export default function AddEvents(props) {
@@ -26,7 +26,7 @@ export default function AddEvents(props) {
 
     function onCreate(name, date, image) {
         console.log({name, date, image,});
-        fetch("http://" + host + "/actions-with-events/add-event.php", {
+        fetch(addEvent, {
             method: 'POST', body: JSON.stringify({name: name, date: date, image: image})
         }).then(response => response.text()).then(response => {
             console.log(JSON.parse(response))
@@ -47,15 +47,15 @@ export default function AddEvents(props) {
                 <Form onSubmit={submitHandler}>
                     <Form.Group className="mb-3">
                         <Form.Label>Название мероприятия</Form.Label>
-                        <Form.Control type="text"/>
+                        <Form.Control type="text" placeholder={"Введите название мероприятия "}/>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Дата проведения</Form.Label>
-                        <Form.Control type="date"/>
+                        <Form.Control type="date" defaultValue={Date.now()}/>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>URL картинки</Form.Label>
-                        <Form.Control type="text"/>
+                        <Form.Control type="text" placeholder={"Введите URL картинки для мероприятия "}/>
                     </Form.Group>
                     <Button variant="none" className="btn btn-lg d-block w-100 gradient" type="submit">
                         {/*<NavLink to="/menu_add">*/}

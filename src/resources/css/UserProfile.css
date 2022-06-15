@@ -1,0 +1,8 @@
+.order-list{
+    border: #201c1f;
+    border-radius: 1rem;
+    max-height: 30rem;
+    overflow: scroll;
+
+    background: #202023;
+}

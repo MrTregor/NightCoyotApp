@@ -1,4 +1,3 @@
-import {FaMinus, FaPlus} from "react-icons/fa";
 import React from "react";
 import DrawMealImg from "./DrawMealImg";
 import {CountCtrlBtn} from "./CountCtrlBtns";

@@ -1,0 +1,26 @@
+import {host} from "../config/database";
+
+export const checkOrderCompletion = "http://" + host + "/actions-with-orders/check-order-completion.php";
+export const createOrder = "http://" + host + "/actions-with-orders/create-order.php";
+export const completeOrder = "http://" + host + "/actions-with-orders/complete-order.php";
+export const deleteMeal = "http://" + host + "/actions-with-meals/delete-meal.php";
+export const deleteEvent = "http://" + host + "/actions-with-events/delete-event.php";
+export const deleteBigCategory = "http://" + host + "/actions-with-big-category/delete-big-category.php";
+export const checkEmailExistence = "http://" + host + "/actions-with-users/check-email-existence.php";
+export const addUser = "http://" + host + "/actions-with-users/add-user.php";
+export const getUserInfo = "http://" + host + "/actions-with-users/get-user-info.php";
+export const updateUser = "http://" + host + "/actions-with-users/update-user.php";
+export const setCategoriesBigCategory = "http://" + host + "/actions-with-meals/set-categories-big-category.php";
+export const renameBigCategory = "http://" + host + "/actions-with-big-category/rename-big-category.php";
+export const addBigCategory = "http://" + host + "/actions-with-big-category/add-big-category.php";
+export const addEvent = "http://" + host + "/actions-with-events/add-event.php";
+export const updateEvent = "http://" + host + "/actions-with-events/update-event.php";
+export const addMeal = "http://" + host + "/actions-with-meals/add-meal.php";
+export const updateMeal = "http://" + host + "/actions-with-meals/update-meal.php";
+export const getMeals = "http://" + host + "/actions-with-meals/get-meals.php";
+export const getMealsCategories = "http://" + host + "/actions-with-meals/get-meals-categories.php";
+export const getBigCategories = "http://" + host + "/actions-with-big-category/get-big-categories.php";
+export const getEvents = "http://" + host + "/actions-with-events/get-events.php";
+export const getCookOrders = "http://" + host + "/actions-with-orders/get-cook-orders.php";
+export const deleteUser = "http://" + host + "/actions-with-users/delete-user.php";
+export const subLoyalScore = "http://"+ host + "/actions-with-users/sub-loyal-score.php";

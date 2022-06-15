@@ -14,8 +14,6 @@ import {
 } from "./utility/get_db_data";
 import Cookies from "universal-cookie";
 
-console.log("1");
-
 ReactDOM.render(<React.StrictMode>
     <div className={"blockScreen d-md-flex justify-content-md-center align-items-md-center"}><h1>Связь с
         сервером, ожидайте. </h1><img src={loadingAnimation} alt={"Загрузка..."}/></div>
@@ -34,12 +32,12 @@ GetMealFromDB().then((menu) => {
                     });
                 } else {
                     ReactDOM.render(<App mealsDB={menu} categoriesDB={categories} bigCategoriesDB={bigCategories}
-                                         eventsDB={events} orderFetches={null}/>, document.getElementById('root'));
+                                         eventsDB={events} orderFetches={[]}/>, document.getElementById('root'));
                 }
             });
         });
     })
-});
+}).catch(err => alert(err));
 
 
 

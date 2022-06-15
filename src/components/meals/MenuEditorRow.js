@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 const MenuEditorRow = (props) => {
-    console.log(props);
+    // console.log(props);
     return (<tr key={props.id}>
         <td>{props.value.name}<span id={props.value.category.name}/></td>
         <td>{props.value.category.name}</td>

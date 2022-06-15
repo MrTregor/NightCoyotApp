@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal'
 import {FaPlus} from "react-icons/fa";
-import {host} from '../../config/database'
+import {updateMeal} from "../../utility/api_pathes";
 
 export default function EditMeal(props) {
     let id = 0;
@@ -30,7 +30,7 @@ export default function EditMeal(props) {
     function onEdit(name, category, price, grams, image, newCat) {
         console.log({name, category, price, grams, image, newCat});
 
-        fetch("http://" + host + "/actions-with-meals/update-meal.php", {
+        fetch(updateMeal, {
             method: 'POST', body: JSON.stringify({
                 name: name, category: category, price: price, grams:grams,  image: image, newCateg: newCat,
                 oldName: props.selectedItem.name
@@ -74,7 +74,7 @@ export default function EditMeal(props) {
     }
 
     function AddCategoryField() {
-        const [categoryField, setCategory] = useState(<div></div>);
+        const [categoryField, setCategory] = useState(<div/>);
         const [isLoading, setLoading] = useState(false);
         useEffect(() => {
             if (isLoading) {
@@ -85,7 +85,7 @@ export default function EditMeal(props) {
 
         const handleClick = () => setLoading(true);
         return (<div className="w-100">
-            <div className="d-lg-flex align-items-lg-center w-100">
+            <div className="d-flex align-items-center w-100">
                 <Form.Select>
                     {options}
                 </Form.Select>
@@ -106,7 +106,7 @@ export default function EditMeal(props) {
         <section className="portfolio-block ">
             <div className="container">
                 <div className="heading">
-                    <h2>Изменить пункт меню</h2>
+                    <h2 className={"text-center"}>Изменить пункт меню</h2>
                 </div>
 
                 <Form onSubmit={submitHandler}>

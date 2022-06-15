@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal'
 import {FaPlus} from "react-icons/fa";
-import {host} from '../../config/database'
+import {addMeal} from "../../utility/api_pathes";
 
 export default function AddMeal(props) {
 
@@ -27,7 +27,7 @@ export default function AddMeal(props) {
         console.log({name, category, price, image, grams, newCat});
 
 
-        fetch("http://" + host + "/actions-with-meals/add-meal.php", {
+        fetch(addMeal, {
             method: 'POST', body: JSON.stringify(
                 {name: name, category: category, price: price, grams: grams, image: image, newCateg: newCat})
         }).then(response => response.text())
@@ -37,8 +37,9 @@ export default function AddMeal(props) {
                     handleShow();
                 } else {
                     handleModalShow();
+                    console.log(category)
                     props.menu.push(
-                        {id: "", name: name, category: {id: "", category: category}, price: price, image: image})
+                        {id: "", name: name, category: {id: "", name: category},grams:grams, price: price, image: image})
                     console.log(props.menu);
                 }
             });
@@ -73,7 +74,7 @@ export default function AddMeal(props) {
     }
 
     function AddCategoryField() {
-        const [categoryField, setCategory] = useState(<div></div>);
+        const [categoryField, setCategory] = useState(<div/>);
         const [isLoading, setLoading] = useState(false);
         useEffect(() => {
             if (isLoading) {
@@ -84,8 +85,8 @@ export default function AddMeal(props) {
 
         const handleClick = () => setLoading(true);
         return (<div className="w-100">
-            <div className="d-lg-flex align-items-lg-center w-100">
-                <Form.Select>
+            <div className="d-flex align-items-center w-100">
+                <Form.Select >
                     {options}
                 </Form.Select>
                 <Button
@@ -105,7 +106,7 @@ export default function AddMeal(props) {
         <section className="portfolio-block ">
             <div className="container">
                 <div className="heading">
-                    <h2>Добавить новый пункт меню</h2>
+                    <h2 className={"text-center"}>Добавить новый пункт меню</h2>
                 </div>
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
@@ -145,7 +146,7 @@ export default function AddMeal(props) {
                         <Form.Control type="text" placeholder="Введите название блюда или напитка"/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>Категория</Form.Label>
+                        <Form.Label >Категория</Form.Label>
                         <AddCategoryField/>
                     </Form.Group>
                     <Form.Group className="mb-3">

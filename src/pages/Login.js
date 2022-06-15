@@ -2,9 +2,10 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal'
-import {host} from "../config/database";
 import {domain} from "../config/domain";
 import Cookies from "universal-cookie";
+import {checkEmailExistence} from "../utility/api_pathes";
+import md5 from "react-native-md5";
 
 
 export default function Login() {
@@ -13,8 +14,8 @@ export default function Login() {
         let email = event.target[0].value;
         let pass = event.target[1].value;
 
-        fetch("http://" + host + "/actions-with-users/check-email-existence.php", {
-            method: 'POST', body: JSON.stringify({email: email, pass: pass})
+        fetch(checkEmailExistence, {
+            method: 'POST', body: JSON.stringify({email: email, pass: md5.hex_md5(pass)})
         }).then(response => response.text())
             .then(response => {
                 console.log(response)
@@ -44,7 +45,7 @@ export default function Login() {
                      style={{backgroundImage: "url(" + domain + "/backgrounds/login_background.png)"}}>
                 <div className="container">
                     <div className="heading" style={{"color": "white"}}>
-                        <h2>Войти</h2>
+                        <h2 className={"text-center"}>Войти</h2>
                     </div>
                     <Form onSubmit={submitHandler} >
                         <Form.Group className="mb-3" controlId="formBasicEmail">

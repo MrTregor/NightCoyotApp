@@ -3,6 +3,7 @@
     --sub-color: #953ca1;
     --main-bg-color: linear-gradient(120deg, var(--main-color), var(--sub-color));
 }
+
 /* TODO: Разобраться со стилями кнопок + и - */
 .count-btn {
     font-size: 2rem;
@@ -34,6 +35,7 @@
     background: var(--sub-color);
     border-color: #191c1f
 }
+
 /*///////////////////////////////////////////////*/
 
 .gradient {
@@ -115,7 +117,7 @@ a:hover {
     border-radius: 20px;
 }
 
-.p_8{
+.p_8 {
     padding: 8px;
 }
 
@@ -126,14 +128,16 @@ a:hover {
     background: #0ec645;
     color: var(--bs-dark);
     font-weight: bold;
-    width: 95%;
+    width: 96%;
     padding-top: 14px;
+    margin-left: 2%;
+    margin-right: 2%;
     position: fixed;
     bottom: 12px;
 }
 
-.form-label {
-    color: #f0f0f0;
+div > label {
+    color: #FFFFff;
 }
 
 .mr_6 {
@@ -151,10 +155,12 @@ a:hover {
 .mr_8 {
     margin-right: 8px
 }
-.mr_20{
+
+.mr_20 {
     margin-right: 20px;
 }
-.mr_20{
+
+.mr_20 {
     margin-left: 20px;
 }
 
@@ -235,6 +241,12 @@ form {
     -webkit-overflow-scrolling: touch;
 }
 
+.event-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
 .blockScreen {
     background: rgba(190, 190, 194, 0.65);
     color: #101011;
@@ -245,4 +257,9 @@ form {
     width: 100%;
     height: 100%;
     z-index: 20309;
+}
+
+.form-check-input:checked {
+    background-color: var(--main-color);
+    border-color: var(--sub-color);
 }

@@ -13,12 +13,12 @@
     color: var(--bs-dark);
     font-weight: bold;
     width: 100%;
-    padding-top: 0px;
+    padding-top: 0;
     padding-right: 0;
     padding-left: 0;
 }
 
-.dark-theme-btn{
+.dark-theme-btn {
     color: #fff;
     background-color: #1a1e21;
     border-color: #191c1f
@@ -27,6 +27,12 @@
 .card {
     border-radius: 20px;
     background-color: #1d1d1b;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+
 }
 
 .card-body {
@@ -35,6 +41,11 @@
 
 .row > * {
     margin-bottom: 12px;
+    width: auto;
+}
+
+section{
+    padding-bottom: 70px;
 }
 
 .row {

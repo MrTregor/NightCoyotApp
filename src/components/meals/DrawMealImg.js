@@ -1,9 +1,9 @@
 import React from "react";
 
 const DrawMealImg = (props) => {
-    return (<div style={{height: 200 + 'px', overflow: "hidden"}}>
+    return (<div >
         <img
-            className="card-img-top br_20" src={props.image} alt="Еда"
+            className="card-img-top br_20" style={{maxHeight:"200px", width:"inherit"}} src={props.image} alt="Еда"
 
         />
     </div>);
