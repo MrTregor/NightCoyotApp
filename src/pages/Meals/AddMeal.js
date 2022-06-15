@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import {FaPlus} from "react-icons/fa";
 import {addMeal} from "../../utility/api_pathes";
 
+
 export default function AddMeal(props) {
 
     let id = 0;
@@ -23,6 +24,10 @@ export default function AddMeal(props) {
     const handleModalShow = () => setModalShow(true);
     const handleModalClose = () => setModalShow(false);
 
+    const [modalErrorShow, setModalErrorShow] = React.useState(false);
+    const handleModalErrorShow = () => setModalErrorShow(true);
+    const handleModalErrorClose = () => setModalErrorShow(false);
+
     function onCreate(name, category, price, grams, image, newCat) {
         console.log({name, category, price, image, grams, newCat});
 
@@ -32,15 +37,34 @@ export default function AddMeal(props) {
                 {name: name, category: category, price: price, grams: grams, image: image, newCateg: newCat})
         }).then(response => response.text())
             .then(response => {
-                console.log(JSON.parse(response))
+                try {
+                    console.log(JSON.parse(response))
+                } catch (e) {
+                    handleModalErrorShow()
+                }
                 if (JSON.parse(response).exist === true) {
                     handleShow();
                 } else {
                     handleModalShow();
+                    let newCategory = {id: Date.now(), name: category}
+                    if (newCat === true) {
+                        props.categories.push(newCategory)
+                    }
                     console.log(category)
-                    props.menu.push(
-                        {id: "", name: name, category: {id: "", name: category},grams:grams, price: price, image: image})
+                    props.menu.push({
+                        id: "",
+                        name: name,
+                        category: newCategory,
+                        grams: grams,
+                        price: price,
+                        image: image
+                    })
                     console.log(props.menu);
+                    console.log(props.categories)
+                    props.UpdateMeals();
+                    if (newCat === true) {
+                        window.location = "/menu_add"
+                    }
                 }
             });
     }
@@ -86,7 +110,7 @@ export default function AddMeal(props) {
         const handleClick = () => setLoading(true);
         return (<div className="w-100">
             <div className="d-flex align-items-center w-100">
-                <Form.Select >
+                <Form.Select>
                     {options}
                 </Form.Select>
                 <Button
@@ -140,13 +164,34 @@ export default function AddMeal(props) {
                         <Button variant="none" className={"gradient"} onClick={handleModalClose}>Хорошо</Button>
                     </Modal.Footer>
                 </Modal>
+                <Modal
+                    show={modalErrorShow}
+                    onHide={() => setModalErrorShow(false)}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Сообщение системы!
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>
+                            Пожалуйста заполните поля!
+                        </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="none" className={"gradient"} onClick={handleModalErrorClose}>Хорошо</Button>
+                    </Modal.Footer>
+                </Modal>
                 <Form onSubmit={submitHandler}>
                     <Form.Group className="mb-3">
                         <Form.Label>Название</Form.Label>
                         <Form.Control type="text" placeholder="Введите название блюда или напитка"/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label >Категория</Form.Label>
+                        <Form.Label>Категория</Form.Label>
                         <AddCategoryField/>
                     </Form.Group>
                     <Form.Group className="mb-3">

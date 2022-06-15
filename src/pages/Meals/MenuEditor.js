@@ -31,6 +31,7 @@ export default function Editor(props) {
         console.log(index)
       }
     })
+    props.UpdateMeals()
   }
 
   function returnMenuEditorRow(id, value, AddItemToDelete) {

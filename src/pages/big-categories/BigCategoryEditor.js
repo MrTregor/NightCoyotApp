@@ -68,6 +68,7 @@ export default function BigCategoryEditor({deleteItem, bigCategoryColumns, addNe
                 }
             });
         }
+        window.location = "/big_category_editor"
     };
 
 
@@ -77,7 +78,9 @@ export default function BigCategoryEditor({deleteItem, bigCategoryColumns, addNe
         }).then(resp => resp.text())
             .then(resp => {
                 console.log(resp)
-
+                if (resp==1){
+                    window.location = "/big_category_editor"
+                }
             })
     }
     const DeleteBigCategory = (columnId) => {
@@ -85,7 +88,7 @@ export default function BigCategoryEditor({deleteItem, bigCategoryColumns, addNe
         delete columns[columnId]
         deleteItem(columnId);
         setColumns(columns);
-
+        window.location = "/big_category_editor"
         setInterval(() => {
             setIsLoading(false);
         }, 1)
@@ -102,6 +105,7 @@ export default function BigCategoryEditor({deleteItem, bigCategoryColumns, addNe
                     items: []
                 }
                 addNewBigCategory({big_category_id: JSON.parse(resp)[0].big_category_id, name: "НОВЫЙ РАЗДЕЛ"})
+                window.location = "/big_category_editor"
                 setInterval(() => {
                     setIsLoading(false)
                 }, 1000)
@@ -129,17 +133,18 @@ export default function BigCategoryEditor({deleteItem, bigCategoryColumns, addNe
                          columnClassName="my-masonry-grid_column">
                     {!isLoading ? Object.entries(columns).map(([columnId, column]) => {
                         return <div key={columnId}>
-                            {/*<Form style={{background: "none", padding: "0px"}} >*/}
-                            <Form.Group className="mb-3 d-flex">
-                                <Form.Control style={{width: "250px", textAlign: "center"}} id={columnId}
-                                              onChange={bigCategoryNameEditedHandler}
-                                              placeholder="Название раздела" defaultValue={column.name}/>
-                                <Button variant={"danger"} onClick={() => {
-                                    DeleteBigCategory(columnId)
-                                }}>
-                                    <MdDeleteForever/></Button>
-                            </Form.Group>
-                            {/*</Form>*/}
+                            <Form style={{background: "none", padding: "0px"}}>
+                                <Form.Group className="mb-3 d-flex">
+                                    <Form.Control style={{width: "250px", textAlign: "center"}} id={columnId}
+                                                  // onChange={bigCategoryNameEditedHandler}
+                                                  onPointerLeave={bigCategoryNameEditedHandler}
+                                                  placeholder="Название раздела" defaultValue={column.name}/>
+                                    <Button variant={"danger"} onClick={() => {
+                                        DeleteBigCategory(columnId)
+                                    }}>
+                                        <MdDeleteForever/></Button>
+                                </Form.Group>
+                            </Form>
                             <Droppable droppableId={columnId} key={Object.keys(column)}>
                                 {(provided, snapshot) => {
                                     return (<div ref={provided.innerRef}
