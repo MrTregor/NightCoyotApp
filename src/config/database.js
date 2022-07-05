@@ -1,2 +1,2 @@
-export let host = 'championapp';
-// export let host = '192.168.8.100';
+// export let host = 'championapp';
+export let host = '192.168.8.101';
